@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">GOOGLE AUTHENTICATION</string>
+    <string name="web_client_id">INSIRA O SEU "ID DO CLIENT DA WEB" AQUI</string>
+</resources>
