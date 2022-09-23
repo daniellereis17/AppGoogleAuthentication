@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_vertical"
-    android:padding="32dp"
+    android:padding="32dp">
 
     <com.google.android.gms.common.SignInButton
     android:id="@+id/signInButton"

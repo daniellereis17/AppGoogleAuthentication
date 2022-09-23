@@ -2,12 +2,11 @@ package com.example.googleauthentication
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -61,6 +60,20 @@ class MainActivity : AppCompatActivity() {
             }
         } else {
             Toast.makeText()
+        }
+    }
+
+    private fun updateUI(account: GoogleSignInAccount) {
+        val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+        auth.signInWithCredential(credential).addOnCompleteListener { it: Task<AuthResult!>
+            if (it.isSuccessful) {
+                val intent = Intent(this, HomeActivity::class.java)
+                intent.putExtra("email", account.email)
+                intent.putExtra("name", account.displayName)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()()
+            }
         }
     }
 }
